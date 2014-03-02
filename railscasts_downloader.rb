@@ -2,7 +2,9 @@
 require 'rss'
 require 'debugger'
 
-SUBSCRIBED_FEED = "http://railscasts.com/subscriptions/vJYazCyyNKus1M03yMYDoQ/episodes.rss"
+# PUT in your subscription account's rss feed. You can find it at 
+# Magaging Subscription/RSS Feeds after logging Railscasts.com
+SUBSCRIBED_FEED = nil
 
 puts 'Downloading rss index'
 rss_feed = SUBSCRIBED_FEED || 'http://feeds.feedburner.com/railscasts'
@@ -23,7 +25,11 @@ missing_videos_urls.each do |video_url|
   puts filename
   download_success = system("curl -C - #{video_url} -o #{filename}.tmp")
   rename_success = system("mv #{filename}.tmp #{filename}")
-  puts "Download #{filename} success!"
-  puts
+  if download_success && rename_success
+    puts "Download #{filename} success!"
+    puts
+  else
+    puts "Something went wrong..."
+  end
 end
 puts 'Finished synchronization'
