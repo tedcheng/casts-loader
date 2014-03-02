@@ -4,7 +4,7 @@ require 'debugger'
 
 # PUT in your subscription account's rss feed. You can find it at 
 # Magaging Subscription/RSS Feeds after logging Railscasts.com
-SUBSCRIBED_FEED = nil
+SUBSCRIBED_FEED = ENV['RAILSCASTS_SUB_RSS_FEED'] || nil
 
 puts 'Downloading rss index'
 rss_feed = SUBSCRIBED_FEED || 'http://feeds.feedburner.com/railscasts'
