@@ -1,5 +1,6 @@
 #!/usr/bin/ruby
 require 'rss'
+require 'debugger'
 
 p 'Downloading rss index'
 
@@ -19,7 +20,7 @@ missing_videos_urls = videos_urls.select { |video_url| missing_filenames.any? { 
 missing_videos_urls.each do |video_url|
   filename = video_url.split('/').last
   p filename
-  p %x(wget -c #{video_url} -O #{filename}.tmp )
-  p %x(mv #{filename}.tmp #{filename} )
+  p %x(curl -C - #{video_url} -o #{filename}.tmp)
+  p %x(mv #{filename}.tmp #{filename})
 end
 p 'Finished synchronization'
