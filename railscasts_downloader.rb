@@ -18,8 +18,6 @@ puts "Downloading #{missing_filenames.size} missing videos"
 
 missing_videos_urls = videos_urls.select { |video_url| missing_filenames.any? { |filename| video_url.match filename } }
 
-
-
 missing_videos_urls.each do |video_url|
   filename = video_url.split('/').last
   puts filename
