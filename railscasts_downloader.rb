@@ -1,6 +1,5 @@
 #!/usr/bin/ruby
 require 'rss'
-require 'debugger'
 
 # PUT in your subscription account's rss feed. You can find it at 
 # Magaging Subscription/RSS Feeds after logging Railscasts.com
