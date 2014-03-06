@@ -20,8 +20,8 @@ missing_videos_urls = videos_urls.select { |video_url| missing_filenames.any? { 
 missing_videos_urls.each do |video_url|
   filename = video_url.split('/').last
   puts filename
-  download_success = system("curl -C - #{video_url} -o #{filename}.tmp")
-  rename_success = system("mv #{filename}.tmp #{filename}")
+  download_success = system("curl -C - #{video_url} -o /downloads/#{filename}.tmp")
+  rename_success = system("mv /downloads/#{filename}.tmp /downloads/#{filename}")
   if download_success && rename_success
     puts "Download #{filename} success!"
     puts
